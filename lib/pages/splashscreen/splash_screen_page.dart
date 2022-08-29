@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pustok/pages/authentication/login_page.dart';
+import 'package:pustok/pages/authentication/welcome_page.dart';
 import 'package:pustok/pages/category/action_books_page.dart';
 import 'package:pustok/pages/home/home_page.dart';
+import 'package:pustok/pages/navigation_bar/navigation_bar_page.dart';
 import 'package:pustok/pages/onboarding/onboarding_page.dart';
 import 'package:pustok/utils/constants/strings/app_asset_strings.dart';
 import 'package:pustok/utils/shared_preferences/shared_preferences_data.dart';
@@ -29,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
         if (SharedPreferencesData.getLoggedIn() == true) {
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+              MaterialPageRoute(builder: (BuildContext context) => NavigationBarPage()),
               (Route<dynamic> route) => false);
         } else {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => LoginPage()),
+                  builder: (BuildContext context) => WelcomePage()),
               (Route<dynamic> route) => false);
         }
       } catch (error) {

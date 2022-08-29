@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pustok/pages/splashscreen/splash_screen_page.dart';
 import 'package:pustok/providers/authentication/authentication_provider.dart';
+import 'package:pustok/providers/home/home_provider.dart';
 import 'package:pustok/providers/library/library_provider.dart';
 import 'package:pustok/providers/onboarding/onboarding_provider.dart';
 import 'package:pustok/providers/purchase/purchase_provider.dart';
@@ -29,6 +30,9 @@ void main() {
       ),
       ChangeNotifierProvider<LibraryProvider>(
         create: (context) => LibraryProvider(),
+      ),
+      ChangeNotifierProvider<HomeProvider>(
+        create: (context) => HomeProvider(),
       ),
 
     ],

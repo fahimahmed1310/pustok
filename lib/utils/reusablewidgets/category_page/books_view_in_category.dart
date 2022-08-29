@@ -20,8 +20,9 @@ class BooksViewInCategory extends StatelessWidget {
   final int? bookId;
   final String? bookPage;
   final String? bookPDF;
+  final bool? isFromSearchPage;
 
-  BooksViewInCategory({@required this.bookCover,@required this.bookName, @required this.bookWriter, @required this.publishedYear, this.bookId, @required this.bookPage, @required this.bookPDF});
+  BooksViewInCategory({@required this.bookCover,@required this.bookName, @required this.bookWriter, @required this.publishedYear, this.bookId, @required this.bookPage, @required this.bookPDF, this.isFromSearchPage});
 
 
   @override
@@ -33,12 +34,12 @@ class BooksViewInCategory extends StatelessWidget {
             return Consumer<LibraryProvider>(
               builder: (_,libraryProvider,___) {
                 return Padding(
-                  padding: const EdgeInsets.only(left:20.0,top: 20,bottom: 20),
+                  padding: isFromSearchPage == true ? const EdgeInsets.only(top: 20,bottom: 20) : const EdgeInsets.only(left:20.0,top: 20,bottom: 20),
                   child: Row(
                     children: [
                       Container(
-                        height:220,
-                        width: 140,
+                        height:200,
+                        width: 120,
                         child: Image.asset(
                           bookCover!,
                           fit: BoxFit.cover,
@@ -52,9 +53,6 @@ class BooksViewInCategory extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                                bookId!.toString(),
-                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,7 +63,7 @@ class BooksViewInCategory extends StatelessWidget {
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "voll",
-                                      fontSize: 23,
+                                      fontSize: 20,
                                     ),
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
@@ -83,7 +81,7 @@ class BooksViewInCategory extends StatelessWidget {
                                     style: const TextStyle(
                                       fontWeight: FontWeight.normal,
                                       fontFamily: "voll",
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
@@ -94,7 +92,7 @@ class BooksViewInCategory extends StatelessWidget {
                              Text(
                               publishedYear!,
                               style: const TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                   fontFamily: "voll"
                               ),

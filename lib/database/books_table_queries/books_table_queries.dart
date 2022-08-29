@@ -63,6 +63,32 @@ class BooksTableQueries{
 
 
 
+
+  Future<List<Books>> allBooksFetch () async{
+    final db = await DatabaseHelper().initDatabase();
+    final mBooks = await db.rawQuery("SELECT * FROM '${DatabaseConstants.BOOK_TABLE}'");
+    List<Books> books = List.generate(mBooks.length, (index) {
+      return Books(
+        bookID: mBooks[index]['bookID'],
+        bookName: mBooks[index]['bookName'],
+        publishedYear: mBooks[index]['publishedYear'],
+        bookWriter: mBooks[index]['bookWriter'],
+        bookGenre: mBooks[index]['bookGenre'],
+        bookCover: mBooks[index]['bookCover'],
+        bookPDF: mBooks[index]['bookPDF'],
+      );
+    });
+    if(books.isNotEmpty){
+      return books;
+    }
+    else{
+      return [];
+    }
+
+  }
+
+
+
   //fetch books from database
   Future<Books> wishedBooksFetch (int wishedBookID) async{
     final db = await DatabaseHelper().initDatabase();

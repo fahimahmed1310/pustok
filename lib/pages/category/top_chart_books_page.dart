@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:pustok/pages/cart/add_to_cart_page.dart';
 import 'package:pustok/providers/books_provider/books_provider.dart';
 import 'package:pustok/utils/reusablewidgets/category_page/books_view_in_category.dart';
 
@@ -36,21 +37,38 @@ class _TopChartBooksPageState extends State<TopChartBooksPage> {
               backgroundColor: Colors.white,
               centerTitle: true,
               elevation: 0,
+              leading: InkWell(
+                onTap:(){
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.black,
+                ),
+              ),
               title: Text(
-                "Top Chart Books".toUpperCase(),
+                "Top Chart".toUpperCase(),
                 style: const TextStyle(
                     fontFamily: "voll",
-                    fontSize:25,
+                    fontSize:20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black
                 ),
               ),
-              actions: const [
+              actions:  [
                 Padding(
-                  padding: const EdgeInsets.only(right:16.0,bottom: 10),
-                  child: Icon(Icons.shopping_cart,
-                    color: Colors.black,
-                    size: 30,
+                  padding: EdgeInsets.only(right: 16.0, bottom: 10),
+                  child: InkWell(
+                    onTap:(){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return AddToCartPage();
+                      }));
+                    },
+                    child: const Icon(
+                      Icons.shopping_cart,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                   ),
                 )
               ],

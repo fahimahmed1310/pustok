@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:pustok/pages/authentication/signup_page.dart';
 import 'package:pustok/pages/home/home_page.dart';
+import 'package:pustok/pages/navigation_bar/navigation_bar_page.dart';
 import 'package:pustok/providers/authentication/authentication_provider.dart';
 import 'package:pustok/utils/constants/strings/app_asset_strings.dart';
 import 'package:pustok/utils/reusablewidgets/authentication_pages_widgets/custom_password_form_field.dart';
@@ -170,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (BuildContext context) => HomePage()),
+                                            builder: (BuildContext context) => NavigationBarPage()),
                                             (Route<dynamic> route) => false);
                                   }else{
                                     CustomToast.toastShower("Incorrect email or password", Colors.red);

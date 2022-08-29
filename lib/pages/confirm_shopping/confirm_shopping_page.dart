@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:pustok/models/library/library.dart';
 import 'package:pustok/pages/library/library_page.dart';
@@ -42,30 +43,71 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
             ),
             body: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
-                    onPressed: () {
+                  SizedBox(
+                    height: 20 ,
+                  ),
+                  Lottie.asset(
+                    "assets/lottie_files/online_payment.json",
+                    height: 300,
+                    width: 300
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
 
-                    },
-                    child: Ink(
-                      width: 270,
-                      child: ListTile(
+                  // bkash
+                  Padding(
+                    padding: const EdgeInsets.only(left:45.0,right:45),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Row(
+                              children:  [
+                                Image.asset(
+                                  "assets/logos/bkash_logo.png",
+                                  height: 30,
+                                  width: 30,
+                                )
+                              ],
+                            ),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  InkWell(
+                                    onTap: ()async{
+                                      // final user = await GoogleSignInRepository.login();
+                                      // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      //   return  TestPage(
+                                      //       user: user
+                                      //   );
+                                      // }));
+                                    },
+                                    child: const Text(
+                                      "BKash",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "voll",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
 
-                        horizontalTitleGap: 30,
-                        leading: Image.asset("assets/logos/bkash_logo.png",
-                            width: 60, height: 60),
-                        title: Text(
-                          "bKash",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "voll",
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -73,28 +115,62 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
-                    onPressed: () {
 
-                    },
-                    child: Ink(
-                      width: 270,
-                      child: ListTile(
-                        horizontalTitleGap: 35,
-                        contentPadding: EdgeInsets.only(left: 30),
 
-                        leading: Image.asset("assets/logos/nagad_logo.png",
-                            width: 40, height: 40),
-                        title: Text(
-                          "Nagad",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "voll",
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+
+
+                  // nogod
+                  Padding(
+                    padding: const EdgeInsets.only(left:45.0,right:45),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Row(
+                              children:  [
+                                Image.asset(
+                                  "assets/logos/nagad_logo.png",
+                                  height: 24,
+                                  width: 24,
+                                )
+                              ],
+                            ),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  InkWell(
+                                    onTap: ()async{
+                                      // final user = await GoogleSignInRepository.login();
+                                      // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      //   return  TestPage(
+                                      //       user: user
+                                      //   );
+                                      // }));
+                                    },
+                                    child: const Text(
+                                      "Nogod",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "voll",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -102,26 +178,62 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
                   SizedBox(
                     height: 30,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
-                    onPressed: () {
 
-                    },
-                    child: Ink(
-                      width: 270,
-                      child: ListTile(
-                        horizontalTitleGap: 30,
-                        leading: Image.asset("assets/logos/pay_pal_logo.png",
-                            width: 60, height: 60),
-                        title: const Text(
-                          "PayPaL",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "voll",
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+
+
+
+                  //paypal
+                  Padding(
+                    padding: const EdgeInsets.only(left:45.0,right:45),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black
+                          ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            Row(
+                              children:  [
+                                Image.asset(
+                                  "assets/logos/pay_pal_logo.png",
+                                  height: 30,
+                                  width: 30,
+                                )
+                              ],
+                            ),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  InkWell(
+                                    onTap: ()async{
+                                      // final user = await GoogleSignInRepository.login();
+                                      // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      //   return  TestPage(
+                                      //       user: user
+                                      //   );
+                                      // }));
+                                    },
+                                    child: const Text(
+                                      "PayPal",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "voll",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -129,39 +241,68 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
                   const SizedBox(
                     height: 30,
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
-                    ),
-                    onPressed: () async {
-                      bool status = await libraryProvider.libraryBooksInsert(widget.library!);
-                      if(status == true){
-                        CustomToast.toastShower("Book is purchased", Colors.green);
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return LibraryPage();
-                        }));
-                      }
 
-                    },
-                    child: Ink(
-                      width: 270,
-                      child: const ListTile(
-                        contentPadding: EdgeInsets.only(left: 30),
-                        horizontalTitleGap: 10,
-                        leading: Icon(Icons.shopping_basket,
-                          size: 30,
-                          color: Colors.red,),
-                        title: Text(
-                          "Cash On Delivary",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "acme",
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+
+
+
+
+                  // cash on delivery
+                  Padding(
+                    padding: const EdgeInsets.only(left:45.0,right:45),
+                    child: InkWell(
+                      onTap: ()async{
+                        bool status = await libraryProvider.libraryBooksInsert(widget.library!);
+                        if(status == true){
+                          CustomToast.toastShower("Book is purchased", Colors.green);
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return LibraryPage();
+                          }));
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black
+                          ),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            children: [
+                              Row(
+                                children:  const [
+                                  Icon(Icons.local_shipping,
+                                  size: 24,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                              ),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children:  const [
+                                    Text(
+                                      "Cash On Delivery",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontFamily: "voll",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
+
 
                 ],
 

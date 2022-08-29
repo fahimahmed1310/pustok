@@ -6,7 +6,7 @@ import 'package:pustok/repositories/library/library_repository.dart';
 
 class LibraryProvider extends ChangeNotifier{
 
-
+  bool _booksAvailable = false;
   List<Books> _libraryBooksList = [];
   bool _status = false;
   List<int> _libraryListBooksID = [];
@@ -112,7 +112,10 @@ class LibraryProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  bool get booksAvailable => _booksAvailable;
 
-
-
+  set booksAvailable(bool value) {
+    _booksAvailable = value;
+    notifyListeners();
+  }
 }

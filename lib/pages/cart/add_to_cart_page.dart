@@ -43,11 +43,20 @@ class _AddToCartPageState extends State<AddToCartPage> {
               backgroundColor: Colors.white,
               centerTitle: true,
               elevation: 0,
+              leading: InkWell(
+                onTap:(){
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.black,
+                ),
+              ),
               title: Text(
                 "Add To Cart".toUpperCase(),
                 style: const TextStyle(
                     fontFamily: "voll",
-                    fontSize:25,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black
                 ),

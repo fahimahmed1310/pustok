@@ -8,6 +8,8 @@ class BooksProvider extends ChangeNotifier{
 
   List<Books> _actionBooksList = [];
   List<Books> _topChartBooksList = [];
+  List<Books> _allBooksList = [];
+  List<Books> _allBooksSearchList = [];
 
   final _booksList = BooksList();
   bool _status = false;
@@ -51,6 +53,20 @@ class BooksProvider extends ChangeNotifier{
     return status;
   }
 
+
+  // all books fetch
+  Future<bool> allBooksFetch()async{
+    status = false;
+    allBooksList = await BooksRepository().allBooksFetch();
+    allBooksSearchList = allBooksList;
+    if(allBooksList.isNotEmpty){
+      status = true;
+    }else{
+      status = false;
+    }
+    notifyListeners();
+    return status;
+  }
 
 
 
@@ -112,7 +128,12 @@ class BooksProvider extends ChangeNotifier{
   }
 
 
+  List<Books> get allBooksList => _allBooksList;
 
+  set allBooksList(List<Books> value) {
+    _allBooksList = value;
+    notifyListeners();
+  }
 
   get booksList => _booksList;
 
@@ -123,10 +144,10 @@ class BooksProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  List<Books> get allBooksSearchList => _allBooksSearchList;
 
-
-
-
-
-
+  set allBooksSearchList(List<Books> value) {
+    _allBooksSearchList = value;
+    notifyListeners();
+  }
 }

@@ -19,6 +19,10 @@ class BooksRepository{
     return BooksTableQueries().booksFetch(bookGenre);
   }
 
+  Future<List<Books>> allBooksFetch () async{
+    return BooksTableQueries().allBooksFetch();
+  }
+
   Future<Books> wishedBooksFetch (int wishedBookID) async{
     return BooksTableQueries().wishedBooksFetch(wishedBookID);
   }

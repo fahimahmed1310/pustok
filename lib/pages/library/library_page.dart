@@ -12,13 +12,20 @@ class LibraryPage extends StatefulWidget {
   State<LibraryPage> createState() => _LibraryPageState();
 }
 
-class _LibraryPageState extends State<LibraryPage> {
-
-
+class _LibraryPageState extends State<LibraryPage> with SingleTickerProviderStateMixin  {
+  //late AnimationController _controller;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  
   @override
   void didChangeDependencies() async{
     super.didChangeDependencies();
     LibraryProvider libraryProvider = await Provider.of<LibraryProvider>(context,listen: false);
+    libraryProvider.booksAvailable = false;
     libraryProvider.libraryBooksList.clear();
     libraryProvider.libraryListBooksID.clear();
     await fetchLibraryBooksInfo(libraryProvider);
@@ -29,8 +36,22 @@ class _LibraryPageState extends State<LibraryPage> {
     if(value == true){
       await libraryProvider.libraryListBooksFetch();
     }
-
+    //await animationController(libraryProvider);
   }
+
+
+  // Future<void> animationController(LibraryProvider libraryProvider)async{
+  //   _controller= AnimationController(vsync: this, duration: Duration(seconds: 1));
+  //   if(_controller.status == _controller.isCompleted){
+  //     if(libraryProvider.libraryBooksList.isEmpty){
+  //       libraryProvider.booksAvailable = true;
+  //     }else{
+  //       libraryProvider.booksAvailable = false;
+  //     }
+  //   }
+  // }
+
+  
 
 
 
@@ -50,16 +71,17 @@ class _LibraryPageState extends State<LibraryPage> {
                 "My Library".toUpperCase(),
                 style: const TextStyle(
                     fontFamily: "voll",
-                    fontSize:25,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black
                 ),
               ),
             ),
-            body: libraryProvider.libraryBooksList.isEmpty ? const Center(
+            body: libraryProvider.libraryBooksList.isEmpty ?  Center(
               child: SpinKitCubeGrid(
                 size: 80,
                 color: Colors.black,
+               // controller: _controller,
               ),
             ):
             SafeArea(

@@ -25,8 +25,26 @@ class _ReadBooksState extends State<ReadBooks> {
 
     return Scaffold(
       appBar:AppBar(
-        title: Text(widget.bookName!.toUpperCase()),
+        leading: InkWell(
+          onTap:(){
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
         centerTitle: true,
+        title: Text(
+          widget.bookName!.toUpperCase(),
+          style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: "voll",
+              color: Colors.black),
+        ),
       ),
       body: PdfView(
         controller: pdfPinchController,
