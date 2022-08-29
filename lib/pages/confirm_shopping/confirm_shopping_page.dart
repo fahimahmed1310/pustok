@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pustok/providers/purchase/purchase_provider.dart';
+import 'package:pustok/models/library/library.dart';
+import 'package:pustok/pages/library/library_page.dart';
+import 'package:pustok/providers/library/library_provider.dart';
+import 'package:pustok/utils/toast/custom_toast.dart';
+
 
 
 class ConfirmShoppingPage extends StatefulWidget {
-  const ConfirmShoppingPage({Key? key}) : super(key: key);
+
+  late final Library? library;
+
+  ConfirmShoppingPage({@required this.library});
+
 
   @override
   State<ConfirmShoppingPage> createState() => _ConfirmShoppingPageState();
@@ -14,8 +22,8 @@ class ConfirmShoppingPage extends StatefulWidget {
 class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PurchaseProvider>(
-        builder: (_, purchaseProvider, ___) {
+    return Consumer<LibraryProvider>(
+        builder: (_, libraryProvider, ___) {
           return Scaffold(
             appBar: AppBar(
               toolbarHeight: 60,
@@ -107,7 +115,7 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
                         horizontalTitleGap: 30,
                         leading: Image.asset("assets/logos/pay_pal_logo.png",
                             width: 60, height: 60),
-                        title: Text(
+                        title: const Text(
                           "PayPaL",
                           style: TextStyle(
                               color: Colors.white,
@@ -118,22 +126,22 @@ class _ConfirmShoppingPageState extends State<ConfirmShoppingPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
                     ),
-                    onPressed: () {
-                      // provider.myPurchasedBookList.add(provider.confirmedBuyBookList[0]);
-                      // provider.addShopList.remove(provider.confirmedBuyBookList[0]);
-                      // provider.confirmedBuyBookList.clear();
-                      // CustomToast.toastShower("Successfully Purchased", Colors.green);
-                      // Navigator.push(context, MaterialPageRoute(builder: (context){
-                      //   return HomePage();
-                      // })
-                      // );
+                    onPressed: () async {
+                      bool status = await libraryProvider.libraryBooksInsert(widget.library!);
+                      if(status == true){
+                        CustomToast.toastShower("Book is purchased", Colors.green);
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return LibraryPage();
+                        }));
+                      }
+
                     },
                     child: Ink(
                       width: 270,

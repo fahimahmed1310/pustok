@@ -81,6 +81,7 @@ class _ActionBooksPageState extends State<ActionBooksPage> {
                  bookName: booksProvider.actionBooksList[index].bookName,
                  publishedYear: booksProvider.actionBooksList[index].publishedYear,
                  bookId: booksProvider.actionBooksList[index].bookID,
+                 bookPDF: booksProvider.actionBooksList[index].bookPDF,
                  bookPage: "category",
                );
               },

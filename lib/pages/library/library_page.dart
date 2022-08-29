@@ -1,42 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:pustok/providers/purchase/purchase_provider.dart';
+import 'package:pustok/providers/library/library_provider.dart';
 import 'package:pustok/utils/reusablewidgets/category_page/books_view_in_category.dart';
 import 'package:pustok/utils/shared_preferences/shared_preferences_data.dart';
 
-class AddToCartPage extends StatefulWidget {
-  const AddToCartPage({Key? key}) : super(key: key);
+class LibraryPage extends StatefulWidget {
+  const LibraryPage({Key? key}) : super(key: key);
 
   @override
-  State<AddToCartPage> createState() => _AddToCartPageState();
+  State<LibraryPage> createState() => _LibraryPageState();
 }
 
-class _AddToCartPageState extends State<AddToCartPage> {
+class _LibraryPageState extends State<LibraryPage> {
+
 
   @override
   void didChangeDependencies() async{
     super.didChangeDependencies();
-    PurchaseProvider purchaseProvider = await Provider.of<PurchaseProvider>(context,listen: false);
-    purchaseProvider.purchaseBooksList.clear();
-    purchaseProvider.purchaseListBooksID.clear();
-    await fetchPurchasedBooksInfo(purchaseProvider);
+    LibraryProvider libraryProvider = await Provider.of<LibraryProvider>(context,listen: false);
+    libraryProvider.libraryBooksList.clear();
+    libraryProvider.libraryListBooksID.clear();
+    await fetchLibraryBooksInfo(libraryProvider);
   }
 
-  Future<void> fetchPurchasedBooksInfo(PurchaseProvider purchaseProvider)async{
-    bool value = await purchaseProvider.purchaseListBooksIDFetch(SharedPreferencesData.getUserEmailAfterLogin());
+  Future<void> fetchLibraryBooksInfo(LibraryProvider libraryProvider)async{
+    bool value = await libraryProvider.libraryListBooksIDFetch(SharedPreferencesData.getUserEmailAfterLogin());
     if(value == true){
-      await purchaseProvider.purchaseListBooksFetch();
+      await libraryProvider.libraryListBooksFetch();
     }
 
   }
 
 
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<PurchaseProvider>(
-        builder: (_,purchaseProvider,___) {
+    return Consumer<LibraryProvider>(
+        builder: (_,libraryProvider,___) {
           return Scaffold(
             appBar: AppBar(
               toolbarHeight: 60,
@@ -44,7 +47,7 @@ class _AddToCartPageState extends State<AddToCartPage> {
               centerTitle: true,
               elevation: 0,
               title: Text(
-                "Add To Cart".toUpperCase(),
+                "My Library".toUpperCase(),
                 style: const TextStyle(
                     fontFamily: "voll",
                     fontSize:25,
@@ -53,7 +56,7 @@ class _AddToCartPageState extends State<AddToCartPage> {
                 ),
               ),
             ),
-            body: purchaseProvider.purchaseBooksList.isEmpty ? const Center(
+            body: libraryProvider.libraryBooksList.isEmpty ? const Center(
               child: SpinKitCubeGrid(
                 size: 80,
                 color: Colors.black,
@@ -71,16 +74,16 @@ class _AddToCartPageState extends State<AddToCartPage> {
                     ),
                   );
                 },
-                itemCount: purchaseProvider.purchaseBooksList.length,
+                itemCount: libraryProvider.libraryBooksList.length,
                 itemBuilder: (context,index){
                   return BooksViewInCategory(
-                    bookCover: purchaseProvider.purchaseBooksList[index].bookCover,
-                    bookWriter: purchaseProvider.purchaseBooksList[index].bookWriter,
-                    bookName: purchaseProvider.purchaseBooksList[index].bookName,
-                    publishedYear: purchaseProvider.purchaseBooksList[index].publishedYear,
-                    bookId: purchaseProvider.purchaseBooksList[index].bookID,
-                    bookPDF: purchaseProvider.purchaseBooksList[index].bookPDF,
-                    bookPage: "cart",
+                    bookCover: libraryProvider.libraryBooksList[index].bookCover,
+                    bookWriter: libraryProvider.libraryBooksList[index].bookWriter,
+                    bookName: libraryProvider.libraryBooksList[index].bookName,
+                    publishedYear: libraryProvider.libraryBooksList[index].publishedYear,
+                    bookId: libraryProvider.libraryBooksList[index].bookID,
+                    bookPDF: libraryProvider.libraryBooksList[index].bookPDF,
+                    bookPage: "library",
                   );
                 },
               ),

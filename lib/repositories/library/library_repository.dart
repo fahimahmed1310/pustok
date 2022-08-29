@@ -12,4 +12,8 @@ class LibraryRepository{
     return LibraryTableQueries().libraryBooksInsert(library);
   }
 
+  Future<List<Library>> libraryListBooksIDFetch(String userEmail) async{
+    return LibraryTableQueries().libraryListBooksIDFetch(userEmail);
+  }
+
 }

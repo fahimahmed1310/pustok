@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pustok/pages/cart/add_to_cart_page.dart';
 import 'package:pustok/pages/category/action_books_page.dart';
-import 'package:pustok/pages/category/top_chart_books_page.dart';
+import 'package:pustok/pages/library/library_page.dart';
 import 'package:pustok/pages/wishlist/wishlist_page.dart';
 import 'package:pustok/providers/books_provider/books_provider.dart';
 import 'package:pustok/utils/shared_preferences/shared_preferences_data.dart';
@@ -45,10 +45,18 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return TopChartBooksPage();
+                      return ActionBooksPage();
                     }));
                   },
-                  child: Text("Top Chart Pages")
+                  child: Text("Action Book Pages")
+              ),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return LibraryPage();
+                    }));
+                  },
+                  child: Text("My Library")
               ),
               ElevatedButton(
                   onPressed: (){

@@ -33,4 +33,27 @@ class LibraryTableQueries{
   }
 
 
+  //fetch from wishlist table
+  Future<List<Library>> libraryListBooksIDFetch (String userEmail) async{
+    final db = await DatabaseHelper().initDatabase();
+    final mLibraryBooks = await db.rawQuery("SELECT * FROM '${DatabaseConstants.LIBRARY_TABLE}' WHERE userEmail = '$userEmail'");
+    List<Library> library = List.generate(mLibraryBooks.length, (index) {
+      return Library(
+        libraryBookID: mLibraryBooks[index]['libraryBookID'],
+        userEmail: mLibraryBooks[index]['userEmail'],
+        myBookID: mLibraryBooks[index]['myBookID'],
+      );
+    });
+    if(library.isNotEmpty){
+      return library;
+    }
+    else{
+      return [];
+    }
+
+  }
+
+
+
+
 }

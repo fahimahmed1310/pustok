@@ -6,6 +6,7 @@ import 'package:pustok/repositories/purchase/purchase_repository.dart';
 
 class PurchaseProvider extends ChangeNotifier{
 
+
   bool _status = false;
   List<int> _purchaseListBooksID = [];
   List<Books> _purchaseBooksList = [];
@@ -106,4 +107,7 @@ class PurchaseProvider extends ChangeNotifier{
     _purchaseBooksList = value;
     notifyListeners();
   }
+
+
+
 }
