@@ -89,6 +89,7 @@ class _WishListPageState extends State<WishListPage> {
                       bookName: wishListProvider.wishedBooksList[index].bookName,
                       publishedYear: wishListProvider.wishedBooksList[index].publishedYear,
                       bookId: wishListProvider.wishedBooksList[index].bookID,
+                      bookPage: "wishlist",
                     );
                   },
                 ),

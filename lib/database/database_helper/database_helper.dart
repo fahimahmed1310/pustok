@@ -29,6 +29,10 @@ class DatabaseHelper {
               "CREATE TABLE "+ DatabaseConstants.PURCHASE_TABLE + " (purchaseID INTEGER PRIMARY KEY AUTOINCREMENT , purchaseBookID INTEGER NOT NULL, userEmail TEXT NOT NULL)"
                   " "
           );
+          await db.execute(
+              "CREATE TABLE "+ DatabaseConstants.LIBRARY_TABLE + " (libraryBookID INTEGER PRIMARY KEY AUTOINCREMENT , userEmail TEXT NOT NULL, myBookID INTEGER NOT NULL)"
+                  " "
+          );
         }
     );
   }

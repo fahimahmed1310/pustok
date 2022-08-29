@@ -3,4 +3,5 @@ class DatabaseConstants{
   static const BOOK_TABLE = "books";
   static const WISHLIST_TABLE = "wishlist";
   static const PURCHASE_TABLE = "purchase";
+  static const LIBRARY_TABLE = "library";
 }

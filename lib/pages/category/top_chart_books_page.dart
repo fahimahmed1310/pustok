@@ -81,6 +81,7 @@ class _TopChartBooksPageState extends State<TopChartBooksPage> {
                     bookName: booksProvider.topChartBooksList[index].bookName,
                     publishedYear: booksProvider.topChartBooksList[index].publishedYear,
                     bookId: booksProvider.topChartBooksList[index].bookID,
+                    bookPage: "category",
                   );
                 },
               ),

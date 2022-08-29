@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pustok/models/purchase.dart';
 import 'package:pustok/models/wishlist.dart';
+import 'package:pustok/pages/confirm_shopping/confirm_shopping_page.dart';
 import 'package:pustok/providers/purchase/purchase_provider.dart';
 import 'package:pustok/providers/wishlist/wishlist_provider.dart';
 import 'package:pustok/utils/shared_preferences/shared_preferences_data.dart';
@@ -14,8 +15,9 @@ class BooksViewInCategory extends StatelessWidget {
   final String? bookWriter;
   final String? publishedYear;
   final int? bookId;
+  final String? bookPage;
 
-  BooksViewInCategory({@required this.bookCover,@required this.bookName, @required this.bookWriter, @required this.publishedYear, this.bookId});
+  BooksViewInCategory({@required this.bookCover,@required this.bookName, @required this.bookWriter, @required this.publishedYear, this.bookId, @required this.bookPage});
 
 
   @override
@@ -95,31 +97,34 @@ class BooksViewInCategory extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black),
-                                onPressed: () async{
-                                  Purchase purchase = Purchase(
-                                    purchaseBookID: bookId,
-                                    userEmail: SharedPreferencesData.getUserEmailAfterLogin()
-                                  );
-                                  bool status = await purchaseProvider
-                                      .isBookExistInPurchaseList(purchase);
-                                  if (status == false) {
-                                    await purchaseProvider.purchaseBooksInsert(purchase);
-                                    CustomToast.toastShower("Added to the cart", Colors.green);
-                                  }
-                                  else{
-                                    CustomToast.toastShower("Already added to the cart", Colors.red);
-                                  }
-                                },
-                                child: const Text(
-                                  "Add To Cart",
-                                  style: TextStyle(
-                                      fontFamily: "voll",
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15
+                            Visibility(
+                              visible: bookPage == "category" || bookPage == "wishlist"? true: false,
+                              child: Expanded(
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.black),
+                                  onPressed: () async{
+                                    Purchase purchase = Purchase(
+                                      purchaseBookID: bookId,
+                                      userEmail: SharedPreferencesData.getUserEmailAfterLogin()
+                                    );
+                                    bool status = await purchaseProvider
+                                        .isBookExistInPurchaseList(purchase);
+                                    if (status == false) {
+                                      await purchaseProvider.purchaseBooksInsert(purchase);
+                                      CustomToast.toastShower("Added to the cart", Colors.green);
+                                    }
+                                    else{
+                                      CustomToast.toastShower("Already added to the cart", Colors.red);
+                                    }
+                                  },
+                                  child: const Text(
+                                    "Add To Cart",
+                                    style: TextStyle(
+                                        fontFamily: "voll",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15
+                                    ),
                                   ),
                                 ),
                               ),
@@ -127,29 +132,32 @@ class BooksViewInCategory extends StatelessWidget {
                             const SizedBox(
                               width: 5,
                             ),
-                            Expanded(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.black),
-                                onPressed: () async {
-                                     WishList wishList = WishList(
-                                       userEmail: SharedPreferencesData.getUserEmailAfterLogin(),
-                                       wishedBookID: bookId,
-                                     );
-                                     bool isExist = await wishListProvider.isBookExistInWishList(wishList);
-                                     if(isExist == false){
-                                       await wishListProvider.wishListBooksInsert(wishList);
-                                       CustomToast.toastShower("Book added", Colors.green);
-                                     }else{
-                                       CustomToast.toastShower("Book Already in wishlist", Colors.red);
-                                     }
-                                },
-                                child: const Text(
-                                  "WishList",
-                                  style: TextStyle(
-                                      fontFamily: "voll",
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15
+                            Visibility(
+                              visible: bookPage == "category" ? true: false,
+                              child: Expanded(
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.black),
+                                  onPressed: () async {
+                                       WishList wishList = WishList(
+                                         userEmail: SharedPreferencesData.getUserEmailAfterLogin(),
+                                         wishedBookID: bookId,
+                                       );
+                                       bool isExist = await wishListProvider.isBookExistInWishList(wishList);
+                                       if(isExist == false){
+                                         await wishListProvider.wishListBooksInsert(wishList);
+                                         CustomToast.toastShower("Book added", Colors.green);
+                                       }else{
+                                         CustomToast.toastShower("Book Already in wishlist", Colors.red);
+                                       }
+                                  },
+                                  child: const Text(
+                                    "WishList",
+                                    style: TextStyle(
+                                        fontFamily: "voll",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15
+                                    ),
                                   ),
                                 ),
                               ),
@@ -159,6 +167,50 @@ class BooksViewInCategory extends StatelessWidget {
                             ),
 
                           ],
+                        ),
+                        Visibility(
+                          visible: bookPage == "cart" ? true : false,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.black),
+                                    onPressed: () async{
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ConfirmShoppingPage();
+                                      }));
+                                      // Purchase purchase = Purchase(
+                                      //     purchaseBookID: bookId,
+                                      //     userEmail: SharedPreferencesData.getUserEmailAfterLogin()
+                                      // );
+                                      // bool status = await purchaseProvider
+                                      //     .isBookExistInPurchaseList(purchase);
+                                      // if (status == false) {
+                                      //   await purchaseProvider.purchaseBooksInsert(purchase);
+                                      //   CustomToast.toastShower("Added to the cart", Colors.green);
+                                      // }
+                                      // else{
+                                      //   CustomToast.toastShower("Already added to the cart", Colors.red);
+                                      // }
+                                    },
+                                    child: const Text(
+                                      "Buy Now",
+                                      style: TextStyle(
+                                          fontFamily: "voll",
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         )
 
 

@@ -52,15 +52,6 @@ class _AddToCartPageState extends State<AddToCartPage> {
                     color: Colors.black
                 ),
               ),
-              actions: const [
-                Padding(
-                  padding: const EdgeInsets.only(right:16.0,bottom: 10),
-                  child: Icon(Icons.shopping_cart,
-                    color: Colors.black,
-                    size: 30,
-                  ),
-                )
-              ],
             ),
             body: purchaseProvider.purchaseBooksList.isEmpty ? const Center(
               child: SpinKitCubeGrid(
@@ -88,6 +79,7 @@ class _AddToCartPageState extends State<AddToCartPage> {
                     bookName: purchaseProvider.purchaseBooksList[index].bookName,
                     publishedYear: purchaseProvider.purchaseBooksList[index].publishedYear,
                     bookId: purchaseProvider.purchaseBooksList[index].bookID,
+                    bookPage: "cart",
                   );
                 },
               ),
