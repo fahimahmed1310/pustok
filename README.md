@@ -1,6 +1,17 @@
 # pustok
 
-A new Flutter project.
+An E-Library App built in Flutter framework.
+
+State Management : Provider
+Database: SQLite
+
+Functionalities : 
+1. Authentication
+2. Explore books based on genre
+3. Can add books on wishlist
+4. Can buy books but not with Payment Gateway
+5. Can read books after buying
+6. Free books can be read by anyone
 
 ## Getting Started
 
