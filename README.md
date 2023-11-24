@@ -1,6 +1,6 @@
 # pustok
 
-An E-Library App built in Flutter framework.
+An E-Library App built on Flutter framework and Dart programming language.
 
 State Management : Provider
 Database: SQLite
@@ -13,15 +13,17 @@ Functionalities :
 5. Can read books after buying
 6. Free books can be read by anyone
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dependencies: 
+1. lottie: ^1.4.1
+2. smooth_page_indicator: ^1.0.0+2
+3. provider: ^6.0.3
+4. flutter_svg: ^1.1.4
+5. google_sign_in: ^5.4.1
+6. sqflite: ^2.0.3+1
+7. path_provider: ^2.0.11
+8. email_validator: ^2.0.1
+9. fluttertoast: ^8.0.9
+10. flutter_spinkit: ^5.1.0
+11. shared_preferences: ^2.0.15
+12. pdfx: ^2.2.0
+13. font_awesome_flutter: ^10.1.0
