@@ -1,17 +1,17 @@
 # pustok
 
-An E-Library App built on Flutter framework and Dart programming language.
+An E-Library app built on the Flutter framework and the Dart programming language
 
-State Management : Provider
-Database: SQLite
+State Management: Provider Database: SQLite
 
-Functionalities : 
-1. Authentication
-2. Explore books based on genre
-3. Can add books on wishlist
-4. Can buy books but not with Payment Gateway
-5. Can read books after buying
-6. Free books can be read by anyone
+Functionalities :
+
+Authentication
+Explore books based on genre.
+Users can add books to my wishlist.
+Users can buy books, but not with Payment Gateway.
+Users can read books after buying them.
+Free books can be read by anyone.
 
 Dependencies: 
 1. lottie: ^1.4.1
