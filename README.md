@@ -1,8 +1,8 @@
 # pustok
 
-An E-Library app built on the Flutter framework and the Dart programming language
-
-State Management: Provider Database: SQLite
+Pustok is an e-library app built on Flutter framework and Dart programming language. An user needs to register(first-time) and login for verification. This app allows user to read books online, make a wishlist of books, search books based on books name. A beautiful UI design as well as a simple way of operating make this app user-friendly.
+State Management: Provider 
+Database: SQLite
 
 Functionalities :
 
